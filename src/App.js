@@ -41,6 +41,8 @@ const SimpleInput = ({ type, placeholder, value, onChange }) => {
   return <input type={type} placeholder={placeholder} value={value} onChange={onChange} />;
 };
 
+
+
 function App() {
   const [isShow, setIsShow] = useState(false);
   const menuItems = [
@@ -62,6 +64,14 @@ function App() {
     setIsVisible(!isVisible);
   };
 
+  const [showGreen, setShowGreen] = useState(true);
+  const [showRed, setShowRed] = useState(false);
+
+  const toggleSquares = () => {
+    setShowGreen(!showGreen);
+    setShowRed(!showRed);
+  };
+
 
   return (
     <div className='App'>
@@ -72,8 +82,12 @@ function App() {
 
       <div>
         <button onClick={toggleVisibility}>{isVisible ? 'Скрыть' : 'Показать'}</button>
-        {isVisible && <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed pharetra metus, a fermentum leo. Duis pharetra dui sem, at sollicitudin nisl sodales eget. Curabitur imperdiet dolor diam, et rutrum est venenatis a. Pellentesque rhoncus porta est in pellentesque. Sed non accumsan turpis. Phasellus lobortis pulvinar tristique. Proin sit amet ex eu mi molestie imperdiet vitae id dui. Ut ligula nunc, efficitur in pellentesque nec, semper quis urna.</p>}
+        {isVisible && <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed pharetra metus, a fermentum leo. Duis pharetra dui sem, at sollicitudin nisl sodales eget. Curabitur imperdiet dolor diam, et rutrum est venenatis a. Pellentesque rhoncus porta est in pellentesque. Sed non accumsan turpis. Phasellus lobortis pulvinar tristique. Proin sit amet ex eu mi molestie imperdiet vitae id dui. Ut ligula nunc, efficitur in pellentesque nec, semper quis urna.</p>}
+      </div>
+
+      <div className='App'>
+        {showGreen && <div style={{ width: '100px', height: '100px', backgroundColor: 'blue' }} onClick={toggleSquares}></div>}
+        {showRed && <div style={{ width: '100px', height: '100px', backgroundColor: 'red' }} onClick={toggleSquares}></div>}
       </div>
 
       <Footer />
